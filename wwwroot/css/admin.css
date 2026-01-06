@@ -1,0 +1,76 @@
+.admin-table {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Basit Editör Stilleri */
+.simple-editor {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    background: white;
+}
+
+.editor-toolbar {
+    background: #f8f9fa;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.editor-area {
+    min-height: 400px;
+    padding: 1rem;
+    outline: none;
+    overflow-y: auto;
+}
+
+.editor-area:focus {
+    background: #fafafa;
+}
+
+.editor-area pre {
+    background: #2d2d2d;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.editor-area code {
+    font-family: 'Courier New', Consolas, monospace;
+}
+
+.editor-area img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem 0;
+}
+
+.editor-area h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.editor-area h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.editor-area p {
+    margin-bottom: 0.75rem;
+}
+

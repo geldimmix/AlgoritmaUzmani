@@ -1,0 +1,54 @@
+@model AUYeni.Models.Education.Course
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Create Course";
+}
+
+<h2>Create New Course</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form method="post" action="/admin/education/course/create">
+    <div class="mb-3">
+        <label class="form-label">Title (Turkish)</label>
+        <input type="text" name="TitleTr" class="form-control" required />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Description (Turkish)</label>
+        <textarea name="DescriptionTr" class="form-control" rows="3"></textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Content (Turkish)</label>
+        <textarea id="ContentTr" name="ContentTr" class="form-control" rows="10" required></textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Level</label>
+        <select name="Level" class="form-select">
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Instructor Name</label>
+        <input type="text" name="InstructorName" class="form-control" />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Featured Image URL</label>
+        <input type="text" name="FeaturedImage" class="form-control" />
+    </div>
+    
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Create Course</button>
+        <a href="/admin/education" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+

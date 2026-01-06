@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    @if (ViewBag.SeoMetadata != null)
+    {
+        <title>@ViewBag.SeoMetadata.Title</title>
+        <meta name="description" content="@ViewBag.SeoMetadata.Description" />
+        <meta name="keywords" content="@ViewBag.SeoMetadata.Keywords" />
+        <link rel="canonical" href="@ViewBag.SeoMetadata.CanonicalUrl" />
+        
+        <!-- Open Graph -->
+        <meta property="og:title" content="@ViewBag.SeoMetadata.OgTitle" />
+        <meta property="og:description" content="@ViewBag.SeoMetadata.OgDescription" />
+        <meta property="og:url" content="@ViewBag.SeoMetadata.OgUrl" />
+        <meta property="og:type" content="article" />
+        @if (!string.IsNullOrEmpty(ViewBag.SeoMetadata.OgImage))
+        {
+            <meta property="og:image" content="@ViewBag.SeoMetadata.OgImage" />
+        }
+        
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="@ViewBag.SeoMetadata.OgTitle" />
+        <meta name="twitter:description" content="@ViewBag.SeoMetadata.OgDescription" />
+    }
+    else
+    {
+        <title>@ViewBag.Title - AUYeni</title>
+    }
+
+    @if (ViewBag.JsonLd != null)
+    {
+        <script type="application/ld+json">
+            @Html.Raw(ViewBag.JsonLd)
+        </script>
+    }
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">AUYeni</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/education">Education</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tutorial">Tutorials</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Admin</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container mt-4">
+        @RenderBody()
+    </main>
+
+    <footer class="bg-dark text-white mt-5 py-4">
+        <div class="container text-center">
+            <p>&copy; 2026 AUYeni - All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-go.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-rust.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+@model AUYeni.Models.Blog.BlogPost
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Edit Blog Post";
+}
+
+<h2>Blog Yazısını Düzenle</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form method="post" action="/admin/blog/edit/@Model.Id">
+    <div class="mb-3">
+        <label class="form-label">Başlık (Türkçe)</label>
+        <input type="text" name="TitleTr" class="form-control" value="@Model.TitleTr" required />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Açıklama (Türkçe)</label>
+        <textarea name="DescriptionTr" class="form-control" rows="3">@Model.DescriptionTr</textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">İçerik (Türkçe)</label>
+        <textarea id="ContentTr" name="ContentTr" class="form-control" rows="15" required>@Model.ContentTr</textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Yazar Adı</label>
+        <input type="text" name="AuthorName" class="form-control" value="@Model.AuthorName" />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Öne Çıkan Resim URL</label>
+        <input type="text" name="FeaturedImage" class="form-control" value="@Model.FeaturedImage" />
+    </div>
+    
+    <input type="hidden" name="CreatedAt" value="@Model.CreatedAt" />
+    
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Güncelle</button>
+        <a href="/admin/blog" class="btn btn-secondary">İptal</a>
+    </div>
+</form>
+

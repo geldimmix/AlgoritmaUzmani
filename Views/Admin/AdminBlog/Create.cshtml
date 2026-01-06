@@ -1,0 +1,52 @@
+@model AUYeni.Models.Blog.BlogPost
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Create Blog Post";
+}
+
+<h2>Create Blog Post</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form method="post" action="/admin/blog/create">
+    <div class="mb-3">
+        <label class="form-label">Title (Turkish)</label>
+        <input type="text" name="TitleTr" class="form-control" required />
+        <small class="text-muted">Will be automatically translated to English</small>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Description (Turkish) - Optional</label>
+        <textarea name="DescriptionTr" class="form-control" rows="3"></textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Content (Turkish)</label>
+        <textarea id="ContentTr" name="ContentTr" class="form-control" rows="15" required></textarea>
+        <small class="text-muted">Use the editor toolbar to format your content and add code blocks</small>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Author Name - Optional</label>
+        <input type="text" name="AuthorName" class="form-control" />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Featured Image URL - Optional</label>
+        <input type="text" name="FeaturedImage" class="form-control" />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Published Date - Optional</label>
+        <input type="datetime-local" name="PublishedAt" class="form-control" />
+    </div>
+    
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Create Post</button>
+        <a href="/admin/blog" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+

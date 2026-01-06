@@ -1,0 +1,39 @@
+@model IEnumerable<AUYeni.Models.Dictionary.DictionaryNamespace>
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Dictionary";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Sözlük Namespace'leri</h2>
+    <a href="/admin/dictionary/namespace/create" class="btn btn-primary">Yeni Namespace Oluştur</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>İsim (TR)</th>
+            <th>İsim (EN)</th>
+            <th>Slug</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ns in Model)
+        {
+            <tr>
+                <td>@ns.Id</td>
+                <td>@ns.NameTr</td>
+                <td>@ns.NameEn</td>
+                <td>@ns.Slug</td>
+                <td>
+                    <div class="admin-actions">
+                        <a href="/admin/dictionary/namespace/@ns.Id/entries" class="btn btn-sm btn-info">Terimler</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

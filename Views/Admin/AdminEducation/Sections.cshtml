@@ -1,0 +1,43 @@
+@model IEnumerable<AUYeni.Models.Education.Section>
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Sections";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2>Course Sections</h2>
+        <p class="text-muted">Course ID: @ViewBag.CourseId</p>
+    </div>
+    <div>
+        <a href="/admin/education/section/create/@ViewBag.CourseId" class="btn btn-primary">Create New Section</a>
+        <a href="/admin/education" class="btn btn-secondary">Back to Courses</a>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Order</th>
+            <th>Title (TR)</th>
+            <th>Title (EN)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var section in Model)
+        {
+            <tr>
+                <td>@section.Order</td>
+                <td>@section.TitleTr</td>
+                <td>@section.TitleEn</td>
+                <td>
+                    <div class="admin-actions">
+                        <a href="/admin/education/section/@section.Id/lessons" class="btn btn-sm btn-info">Lessons</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

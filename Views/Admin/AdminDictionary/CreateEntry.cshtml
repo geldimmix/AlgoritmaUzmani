@@ -1,0 +1,52 @@
+@model AUYeni.Models.Dictionary.DictionaryEntry
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Create Dictionary Entry";
+}
+
+<h2>Yeni Sözlük Terimi Ekle</h2>
+<p class="text-muted">Namespace ID: @ViewBag.NamespaceId</p>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form method="post" action="/admin/dictionary/entry/create/@ViewBag.NamespaceId">
+    <div class="mb-3">
+        <label class="form-label">Terim (Türkçe)</label>
+        <input type="text" name="TermTr" class="form-control" required />
+        <small class="text-muted">Örnek: Algoritma</small>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Kısa Açıklama (Türkçe)</label>
+        <textarea name="ShortDescriptionTr" class="form-control" rows="2" required></textarea>
+        <small class="text-muted">Sözlük listesinde görünecek kısa açıklama</small>
+    </div>
+    
+    <hr />
+    
+    <h5>Detaylı Makale</h5>
+    
+    <div class="mb-3">
+        <label class="form-label">Makale Başlığı (Türkçe)</label>
+        <input type="text" name="TitleTr" class="form-control" required />
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Makale Açıklaması (Türkçe)</label>
+        <textarea name="DescriptionTr" class="form-control" rows="3"></textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Makale İçeriği (Türkçe)</label>
+        <textarea id="ContentTr" name="ContentTr" class="form-control" rows="15" required></textarea>
+    </div>
+    
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Terim Ekle</button>
+        <a href="/admin/dictionary/namespace/@ViewBag.NamespaceId/entries" class="btn btn-secondary">İptal</a>
+    </div>
+</form>
+

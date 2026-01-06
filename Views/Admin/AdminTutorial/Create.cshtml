@@ -1,0 +1,50 @@
+@model AUYeni.Models.Tutorial.Tutorial
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Create Tutorial";
+}
+
+<h2>Yeni Tutorial Oluştur</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form method="post" action="/admin/tutorial/create">
+    <div class="mb-3">
+        <label class="form-label">Başlık (Türkçe)</label>
+        <input type="text" name="TitleTr" class="form-control" required />
+        <small class="text-muted">Örnek: Python Tutorial</small>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Açıklama (Türkçe)</label>
+        <textarea name="DescriptionTr" class="form-control" rows="3"></textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Ana İçerik (Türkçe)</label>
+        <textarea id="ContentTr" name="ContentTr" class="form-control" rows="10" required></textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Zorluk Seviyesi</label>
+        <select name="Difficulty" class="form-select">
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Öne Çıkan Resim URL</label>
+        <input type="text" name="FeaturedImage" class="form-control" />
+    </div>
+    
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Tutorial Oluştur</button>
+        <a href="/admin/tutorial" class="btn btn-secondary">İptal</a>
+    </div>
+</form>
+

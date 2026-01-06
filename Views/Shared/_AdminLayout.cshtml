@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Admin Panel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+    <link rel="stylesheet" href="~/css/admin.css" />
+</head>
+<body>
+    <div class="d-flex" style="min-height: 100vh;">
+        <!-- Sidebar -->
+        <nav class="bg-dark text-white p-3" style="width: 250px;">
+            <h4 class="mb-4">Admin Panel</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/admin">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/admin/blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/admin/education">Education</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/admin/tutorial">Tutorials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/admin/dictionary">Dictionary</a>
+                </li>
+                <li class="nav-item mt-4">
+                    <form method="post" action="/admin/logout">
+                        <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1 p-4">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-go.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-rust.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+    <script src="~/js/simple-editor.js"></script>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

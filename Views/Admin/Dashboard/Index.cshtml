@@ -1,0 +1,54 @@
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2>Admin Dashboard</h2>
+
+<div class="row mt-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Blog Posts</h5>
+                <p class="card-text">Manage blog posts</p>
+                <a href="/admin/blog" class="btn btn-light btn-sm">Manage</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Courses</h5>
+                <p class="card-text">Manage education courses</p>
+                <a href="/admin/education" class="btn btn-light btn-sm">Manage</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Tutorials</h5>
+                <p class="card-text">Manage tutorials</p>
+                <a href="/admin/tutorial" class="btn btn-light btn-sm">Manage</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Dictionary</h5>
+                <p class="card-text">Manage dictionary entries</p>
+                <a href="/admin/dictionary" class="btn btn-light btn-sm">Manage</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-info mt-4">
+    <strong>Welcome to AUYeni Admin Panel!</strong><br/>
+    All content entered in Turkish will be automatically translated to English for SEO purposes.
+</div>
+
