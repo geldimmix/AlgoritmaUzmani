@@ -14,13 +14,14 @@ public class DashboardController : Controller
     public IActionResult Login(string username, string password)
     {
         // Simple login - enhance with proper authentication
-        if (username == "admin" && password == "Admin123!")
+        if (username == "meminoglu" && password == "Liberemall423445!!")
         {
             HttpContext.Session.SetString("IsAdmin", "true");
+            HttpContext.Session.SetString("AdminUser", username);
             return RedirectToAction("Index");
         }
         
-        ViewBag.Error = "Invalid credentials";
+        ViewBag.Error = "Kullanıcı adı veya şifre hatalı!";
         return View();
     }
 

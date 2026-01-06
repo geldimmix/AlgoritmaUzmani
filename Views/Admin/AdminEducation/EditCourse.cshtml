@@ -1,0 +1,87 @@
+@model AUYeni.Models.Education.Course
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Kursu Düzenle";
+}
+
+<div class="card">
+    <div class="card-body">
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-circle me-2"></i>
+                @ViewBag.Error
+            </div>
+        }
+        
+        <form method="post" action="/admin/education/course/edit/@Model.Id">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label class="form-label">
+                        <i class="fas fa-heading me-1"></i>
+                        Başlık (Türkçe)
+                    </label>
+                    <input type="text" name="TitleTr" class="form-control" value="@Model.TitleTr" required />
+                </div>
+                
+                <div class="col-md-12 mb-3">
+                    <label class="form-label">
+                        <i class="fas fa-align-left me-1"></i>
+                        Açıklama (Türkçe)
+                    </label>
+                    <textarea name="DescriptionTr" class="form-control" rows="3">@Model.DescriptionTr</textarea>
+                </div>
+                
+                <div class="col-md-12 mb-3">
+                    <label class="form-label">
+                        <i class="fas fa-file-alt me-1"></i>
+                        İçerik (Türkçe)
+                    </label>
+                    <textarea id="ContentTr" name="ContentTr" class="form-control" rows="15" required>@Model.ContentTr</textarea>
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">
+                        <i class="fas fa-layer-group me-1"></i>
+                        Seviye
+                    </label>
+                    <select name="Level" class="form-select">
+                        <option value="Beginner" @(Model.Level == "Beginner" ? "selected" : "")>Beginner</option>
+                        <option value="Intermediate" @(Model.Level == "Intermediate" ? "selected" : "")>Intermediate</option>
+                        <option value="Advanced" @(Model.Level == "Advanced" ? "selected" : "")>Advanced</option>
+                    </select>
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">
+                        <i class="fas fa-chalkboard-teacher me-1"></i>
+                        Eğitmen Adı
+                    </label>
+                    <input type="text" name="InstructorName" class="form-control" value="@Model.InstructorName" />
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">
+                        <i class="fas fa-image me-1"></i>
+                        Öne Çıkan Resim URL
+                    </label>
+                    <input type="text" name="FeaturedImage" class="form-control" value="@Model.FeaturedImage" />
+                </div>
+            </div>
+            
+            <input type="hidden" name="CreatedAt" value="@Model.CreatedAt" />
+            
+            <div class="d-flex gap-2 mt-4">
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save me-2"></i>
+                    Güncelle
+                </button>
+                <a href="/admin/education" class="btn btn-secondary">
+                    <i class="fas fa-times me-2"></i>
+                    İptal
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+

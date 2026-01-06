@@ -1,7 +1,7 @@
-@model AUYeni.Models.Blog.BlogPost
+@model AUYeni.Models.Tutorial.Tutorial
 @{
     Layout = "_AdminLayout";
-    ViewData["Title"] = "Yeni Blog Yazısı";
+    ViewData["Title"] = "Tutorial Düzenle";
 }
 
 <div class="card">
@@ -13,66 +13,62 @@
                 @ViewBag.Error
             </div>
         }
-
-        <form method="post" action="/admin/blog/create">
+        
+        <form method="post" action="/admin/tutorial/edit/@Model.Id">
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <label class="form-label">
                         <i class="fas fa-heading me-1"></i>
                         Başlık (Türkçe)
                     </label>
-                    <input type="text" name="TitleTr" class="form-control" required />
-                    <small class="text-muted">Otomatik olarak İngilizceye çevrilecektir</small>
+                    <input type="text" name="TitleTr" class="form-control" value="@Model.TitleTr" required />
                 </div>
                 
                 <div class="col-md-12 mb-3">
                     <label class="form-label">
                         <i class="fas fa-align-left me-1"></i>
-                        Açıklama (Türkçe) - Opsiyonel
+                        Açıklama (Türkçe)
                     </label>
-                    <textarea name="DescriptionTr" class="form-control" rows="3"></textarea>
+                    <textarea name="DescriptionTr" class="form-control" rows="3">@Model.DescriptionTr</textarea>
                 </div>
                 
                 <div class="col-md-12 mb-3">
                     <label class="form-label">
                         <i class="fas fa-file-alt me-1"></i>
-                        İçerik (Türkçe)
+                        Ana İçerik (Türkçe)
                     </label>
-                    <textarea id="ContentTr" name="ContentTr" class="form-control" rows="15" required></textarea>
-                    <small class="text-muted">Editör araç çubuğunu kullanarak içeriğinizi biçimlendirin, resim ve kod bloğu ekleyin</small>
+                    <textarea id="ContentTr" name="ContentTr" class="form-control" rows="15" required>@Model.ContentTr</textarea>
                 </div>
                 
                 <div class="col-md-6 mb-3">
                     <label class="form-label">
-                        <i class="fas fa-user me-1"></i>
-                        Yazar Adı - Opsiyonel
+                        <i class="fas fa-signal me-1"></i>
+                        Zorluk Seviyesi
                     </label>
-                    <input type="text" name="AuthorName" class="form-control" />
+                    <select name="Difficulty" class="form-select">
+                        <option value="Beginner" @(Model.Difficulty == "Beginner" ? "selected" : "")>Beginner</option>
+                        <option value="Intermediate" @(Model.Difficulty == "Intermediate" ? "selected" : "")>Intermediate</option>
+                        <option value="Advanced" @(Model.Difficulty == "Advanced" ? "selected" : "")>Advanced</option>
+                    </select>
                 </div>
                 
                 <div class="col-md-6 mb-3">
                     <label class="form-label">
                         <i class="fas fa-image me-1"></i>
-                        Öne Çıkan Resim URL - Opsiyonel
+                        Öne Çıkan Resim URL
                     </label>
-                    <input type="text" name="FeaturedImage" class="form-control" />
-                </div>
-                
-                <div class="col-md-12 mb-3">
-                    <label class="form-label">
-                        <i class="fas fa-calendar me-1"></i>
-                        Yayın Tarihi - Opsiyonel
-                    </label>
-                    <input type="datetime-local" name="PublishedAt" class="form-control" />
+                    <input type="text" name="FeaturedImage" class="form-control" value="@Model.FeaturedImage" />
                 </div>
             </div>
             
+            <input type="hidden" name="CreatedAt" value="@Model.CreatedAt" />
+            
             <div class="d-flex gap-2 mt-4">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-success">
                     <i class="fas fa-save me-2"></i>
-                    Yazıyı Oluştur
+                    Güncelle
                 </button>
-                <a href="/admin/blog" class="btn btn-secondary">
+                <a href="/admin/tutorial" class="btn btn-secondary">
                     <i class="fas fa-times me-2"></i>
                     İptal
                 </a>

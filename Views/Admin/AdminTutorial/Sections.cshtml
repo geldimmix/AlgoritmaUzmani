@@ -1,0 +1,67 @@
+@model IEnumerable<AUYeni.Models.Tutorial.TutorialSection>
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Tutorial Bölümleri";
+}
+
+<div class="card">
+    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+        <div>
+            <h5 class="mb-0">
+                <i class="fas fa-list-ol me-2"></i>
+                Bölümler
+            </h5>
+            <small class="text-muted">Tutorial ID: @ViewBag.TutorialId</small>
+        </div>
+        <div>
+            <a href="/admin/tutorial/section/create/@ViewBag.TutorialId" class="btn btn-primary">
+                <i class="fas fa-plus me-2"></i>
+                Yeni Bölüm Ekle
+            </a>
+            <a href="/admin/tutorial" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-2"></i>
+                Tutorial'lara Dön
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                Henüz bölüm eklenmemiş. İlk bölümü eklemek için yukarıdaki butonu kullanın.
+            </div>
+        }
+        else
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th width="80">Sıra</th>
+                        <th>Başlık (TR)</th>
+                        <th>Başlık (EN)</th>
+                        <th width="150">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var section in Model)
+                    {
+                        <tr>
+                            <td><span class="badge bg-primary">@section.Order</span></td>
+                            <td>@section.TitleTr</td>
+                            <td>@section.TitleEn</td>
+                            <td>
+                                <div class="admin-actions">
+                                    <a href="/admin/tutorial/section/edit/@section.Id" class="btn btn-sm btn-warning">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+

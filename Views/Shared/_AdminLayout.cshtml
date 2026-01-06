@@ -5,41 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title - Admin Panel</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
     <link rel="stylesheet" href="~/css/admin.css" />
 </head>
-<body>
+<body class="admin-body">
     <div class="d-flex" style="min-height: 100vh;">
         <!-- Sidebar -->
-        <nav class="bg-dark text-white p-3" style="width: 250px;">
-            <h4 class="mb-4">Admin Panel</h4>
-            <ul class="nav flex-column">
+        <nav class="admin-sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-cog fa-spin me-2"></i>
+                <h4 class="mb-0">Admin Panel</h4>
+            </div>
+            
+            <div class="sidebar-user">
+                <i class="fas fa-user-circle fa-2x mb-2"></i>
+                <div class="user-name">@Context.Session.GetString("AdminUser")</div>
+            </div>
+            
+            <ul class="nav flex-column sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin">Dashboard</a>
+                    <a class="nav-link" href="/admin">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin/blog">Blog</a>
+                    <a class="nav-link" href="/admin/blog">
+                        <i class="fas fa-blog"></i>
+                        <span>Blog Yazıları</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin/education">Education</a>
+                    <a class="nav-link" href="/admin/education">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Eğitimler</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin/tutorial">Tutorials</a>
+                    <a class="nav-link" href="/admin/tutorial">
+                        <i class="fas fa-book-open"></i>
+                        <span>Tutoriallar</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin/dictionary">Dictionary</a>
+                    <a class="nav-link" href="/admin/dictionary">
+                        <i class="fas fa-book"></i>
+                        <span>Sözlük</span>
+                    </a>
                 </li>
-                <li class="nav-item mt-4">
+                <li class="nav-item mt-auto">
                     <form method="post" action="/admin/logout">
-                        <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                        <button type="submit" class="btn-logout">
+                            <i class="fas fa-sign-out-alt me-2"></i>
+                            Çıkış Yap
+                        </button>
                     </form>
                 </li>
             </ul>
         </nav>
 
         <!-- Main Content -->
-        <div class="flex-grow-1 p-4">
-            @RenderBody()
+        <div class="admin-content">
+            <div class="content-header">
+                <h2>@ViewBag.Title</h2>
+                <div class="header-actions">
+                    <a href="/" class="btn btn-sm btn-outline-primary" target="_blank">
+                        <i class="fas fa-external-link-alt me-1"></i>
+                        Siteyi Görüntüle
+                    </a>
+                </div>
+            </div>
+            <div class="content-body">
+                @RenderBody()
+            </div>
         </div>
     </div>
 
