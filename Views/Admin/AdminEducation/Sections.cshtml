@@ -25,15 +25,15 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var section in Model)
+        @foreach (var item in Model)
         {
             <tr>
-                <td>@section.Order</td>
-                <td>@section.TitleTr</td>
-                <td>@section.TitleEn</td>
+                <td>@item.Order</td>
+                <td>@item.TitleTr</td>
+                <td>@item.TitleEn</td>
                 <td>
                     <div class="admin-actions">
-                        <a href="/admin/education/section/@section.Id/lessons" class="btn btn-sm btn-info">Lessons</a>
+                        <a href="/admin/education/section/@item.Id/lessons" class="btn btn-sm btn-info">Lessons</a>
                     </div>
                 </td>
             </tr>
